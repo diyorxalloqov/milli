@@ -5,6 +5,7 @@ import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/accaunt/presentation/ui/accaunt_page.dart';
 import 'package:milli/modules/catalog/presentation/ui/catalog_page.dart';
 import 'package:milli/modules/favourite/presentation/ui/favourite_page.dart';
+import 'package:milli/modules/global/widgets/extensions/size.dart';
 import 'package:milli/modules/home/presentation/ui/home_page.dart';
 import 'package:milli/modules/shopping/presentation/ui/shopping_page.dart';
 
@@ -30,7 +31,7 @@ class _BottomNavbarState extends State<BottomNavbarScreen> {
     return Scaffold(
       body: _screens[_currenIndex],
       bottomNavigationBar: SizedBox(
-        height: 90,
+        height: context.height * 0.1,
         width: double.infinity,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -83,7 +84,7 @@ class _BottomNavbarState extends State<BottomNavbarScreen> {
                 label: "Корзина"),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  SvgImages.favourite,
+                  SvgImages.un_favourite,
                   width: 30,
                   color: _currenIndex == 3 ? primaryColor : Colors.black,
                 ),

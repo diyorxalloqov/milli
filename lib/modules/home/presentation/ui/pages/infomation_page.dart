@@ -38,11 +38,11 @@ class InformationWidget extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              print(index);
+            },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
-              width: 164,
-              height: 206,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(5)),
               child: Center(

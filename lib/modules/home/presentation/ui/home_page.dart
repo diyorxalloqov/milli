@@ -6,11 +6,14 @@ import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 import 'package:milli/modules/global/widgets/menu_widget.dart';
 import 'package:milli/modules/global/widgets/search_textformfield_widget.dart';
+import 'package:milli/modules/global/widgets/text_widget.dart';
+import 'package:milli/modules/home/presentation/ui/pages/helpers/about_page.dart';
+import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_category_3.dart';
 import 'package:milli/modules/home/presentation/ui/pages/infomation_page.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/home_first_widget.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/home_second_widget.dart';
-import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_categories.dart';
-import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_categories_2.dart';
+import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_category_1.dart';
+import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_category_2.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/menu/menu_page.dart';
 
 class HomeePage extends StatefulWidget {
@@ -43,6 +46,7 @@ class _HomeePageState extends State<HomeePage> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 13),
@@ -55,7 +59,7 @@ class _HomeePageState extends State<HomeePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>  MenuPage()));
+                                  builder: (context) => MenuPage()));
                         },
                         icon: const Icon(Icons.menu),
                       ),
@@ -75,15 +79,7 @@ class _HomeePageState extends State<HomeePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'Лучшие категории',
-                        style: TextStyle(
-                          color: Color(0xFF171515),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          height: 0.09,
-                        ),
-                      ),
+                      const TextWidget(text: "Лучшие категории"),
                       TextButton(
                           onPressed: () {},
                           child: Text(
@@ -97,7 +93,7 @@ class _HomeePageState extends State<HomeePage> {
                     width: double.infinity,
                     child: TopCategory(),
                   ),
-                  // for ads advertising
+                  // for ads - advertising
                   Container(
                     height: 67,
                     decoration: const BoxDecoration(
@@ -116,15 +112,7 @@ class _HomeePageState extends State<HomeePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Лучшие категории',
-                    style: TextStyle(
-                      color: Color(0xFF171515),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      height: 0.09,
-                    ),
-                  ),
+                  const TextWidget(text: "Лучшие категории"),
                   TextButton(
                       onPressed: () {},
                       child: Text(
@@ -135,14 +123,31 @@ class _HomeePageState extends State<HomeePage> {
               ),
             ),
             SizedBox(
-              height: context.height * 0.725,
-              child: TopCategory2(),
+              height: context.height * 0.37,
+              child: const TopCategory2(),
             ),
             const SizedBox(height: 20),
+            //// for ads
             Container(
-              height: 67,
+              height: 70,
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage(PngImages.ads))),
+                  image: DecorationImage(
+                      image: AssetImage(PngImages.ads), fit: BoxFit.cover)),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 24, vertical: context.height * 0.03),
+              child: const TextWidget(text: "Рекомендуем вам"),
+            ),
+            SizedBox(
+              height: context.height * 0.37,
+              child: const TopCategory3(),
+            ),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 50),
+              child: AboutPage(),
             )
           ],
         ),

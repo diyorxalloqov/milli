@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/catalog/presentation/ui/widgets/product_item.dart';
 import 'package:milli/modules/global/widgets/menu_widget.dart';
@@ -28,7 +29,21 @@ class _CatalogPageState extends State<CatalogPage> {
     "Dell",
     "Acer",
     "Asus",
+    "HP",
+    "Apple",
+    "Dell",
+    "Acer",
+    "Asus",
+    "Acer",
   ];
+  ///// item pagenation
+  int limit = 7;
+  bool showMore = false;
+
+  List<String> getVisibleChips() {
+    return showMore ? chipTitle : chipTitle.take(limit).toList();
+  }
+  ////////
 
   @override
   void initState() {
@@ -83,12 +98,14 @@ class _CatalogPageState extends State<CatalogPage> {
                   alignment: WrapAlignment.start,
                   spacing: 8.0,
                   runSpacing: 4.0,
-                  children: List.generate(chipTitle.length, (index) {
+                  children: List.generate(getVisibleChips().length, (index) {
                     return ChoiceChip(
-                      label: Text(chipTitle[index]),
+                      label: Text(getVisibleChips()[index]),
                       side: BorderSide.none,
+                      disabledColor: Colors.red,
                       showCheckmark: false,
                       backgroundColor: const Color(0xFFEBEBEB),
+                      selectedColor: primaryColor.withOpacity(0.5),
                       onSelected: (value) {
                         setState(() {
                           if (value) {
@@ -100,12 +117,26 @@ class _CatalogPageState extends State<CatalogPage> {
                       },
                       selected: selectedChipIndex == index,
                     );
-                  }),
-                ),
+                  })
+                    ..add(chipTitle.length > limit
+                        ? OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                                backgroundColor: const Color(0xFFEBEBEB),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5))),
+                            onPressed: () {
+                              setState(() {
+                                showMore = !showMore;
+                              });
+                            },
+                            child: Text(showMore ? "меньше" : "Ещё 11 "),
+                          )
+                        : const SizedBox()),
+                )
               ],
             ),
           ),
-          Expanded(child: ProductItem()),
+          const Expanded(child: ProductItem()),
           const SizedBox(height: 10)
         ],
       )),
