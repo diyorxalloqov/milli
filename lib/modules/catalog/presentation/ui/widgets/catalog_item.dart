@@ -21,8 +21,8 @@ class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
-      thickness: 8,
-      radius: const Radius.circular(10),
+      thickness: 6,
+      radius: const Radius.circular(8),
       trackVisibility: true,
       interactive: true,
       child: GridView.builder(
@@ -56,7 +56,7 @@ class _ProductItemState extends State<ProductItem> {
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(3),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "-15% скидка",
                             style: TextStyle(
@@ -75,7 +75,7 @@ class _ProductItemState extends State<ProductItem> {
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(3),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "Супер цена",
                             style: TextStyle(
@@ -89,11 +89,11 @@ class _ProductItemState extends State<ProductItem> {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  Flexible(
+                   Flexible(
                     child: Text(
                       "Macbook Air 13 M1 8gb RAM / 256gb SSD storage",
                       style: TextStyle(
-                        color: Color(0xFF171515),
+                        color: blackColor,
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
                         overflow: TextOverflow.ellipsis,
@@ -101,7 +101,7 @@ class _ProductItemState extends State<ProductItem> {
                       maxLines: 2,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "3 370 927 сум",
                     style: TextStyle(
                       decoration: TextDecoration.lineThrough,
@@ -138,7 +138,7 @@ class _ProductItemState extends State<ProductItem> {
                                 color: Colors.white,
                                 width: 17,
                               ),
-                              Text(
+                              const Text(
                                 "В корзину",
                                 style: TextStyle(
                                   color: Color(0xFFF9F9F9),

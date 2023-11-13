@@ -116,11 +116,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: Color(0xFF999999)),
                         ),
                         TextSpan(
-                          onEnter: (event) => PointerEnterEvent(),
+                          onEnter: (event) => const PointerEnterEvent(),
                           text: 'политикой\nконфиденциальности',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF171515),
+                            color: blackColor,
                           ),
                         ),
                         const TextSpan(
@@ -130,11 +130,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               color: Color(0xFF999999)),
                         ),
                         TextSpan(
-                          onEnter: (event) => PointerEnterEvent(),
+                          onEnter: (event) => const PointerEnterEvent(),
                           text: ' условиями\n',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF171515),
+                            color: blackColor,
                           ),
                         ),
                         const TextSpan(

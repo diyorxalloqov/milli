@@ -14,12 +14,13 @@ class FirstWidget extends StatefulWidget {
 class FirstWidgetState extends State<FirstWidget> {
   late PageController _pageController;
   int _currentPage = 0;
+  late Timer _timer;
 
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
 
-    Timer.periodic(const Duration(seconds: 7), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 7), (timer) {
       // 2 data length this is coming bloc state
       if (_currentPage < 2) {
         _currentPage++;
@@ -40,6 +41,7 @@ class FirstWidgetState extends State<FirstWidget> {
   @override
   void dispose() {
     _pageController.dispose();
+    _timer.cancel();
     super.dispose();
   }
 
@@ -74,10 +76,10 @@ class FirstWidgetState extends State<FirstWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
+                              Text(
                                 "Тяжёлое машиностроение — это вам не песнь светлого будущего",
                                 style: TextStyle(
-                                  color: Color(0xFF171515),
+                                  color: blackColor,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w700,
                                   overflow: TextOverflow.clip,
@@ -124,7 +126,7 @@ class FirstWidgetState extends State<FirstWidget> {
                   decoration: BoxDecoration(
                     color: _currentPage == i
                         ? primaryColor
-                        : const Color(0xFF171515).withOpacity(0.6),
+                        : blackColor.withOpacity(0.6),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   width: _currentPage == i ? 25 : 10,

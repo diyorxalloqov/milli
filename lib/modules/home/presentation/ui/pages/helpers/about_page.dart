@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/png_images.dart';
 import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
-import 'package:milli/modules/global/widgets/text_widget.dart';
+import 'package:milli/modules/global/widgets/high_text_widget.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/expansionTile_item_widget.dart';
 
 class AboutPage extends StatelessWidget {
@@ -22,20 +23,20 @@ class AboutPage extends StatelessWidget {
               color: const Color(0xff9f9f81).withOpacity(0.1),
               borderRadius: BorderRadius.circular(2),
               border: Border.all(color: Colors.white10),
-              image: DecorationImage(
+              image: const DecorationImage(
                   image: AssetImage(PngImages.image2),
                   alignment: Alignment.centerLeft)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              TextWidget(text: "Стать поставщиком на Milli"),
+              const HighTextWidget(text: "Стать поставщиком на Milli"),
               Text(
                 "Продавайте свои товары и продукты удобно и легко на нашей оптовой платформе.",
                 maxLines: 2,
                 textAlign: TextAlign.end,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: Color(0xFF171515),
+                  color: blackColor,
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                 ),
@@ -45,7 +46,7 @@ class AboutPage extends StatelessWidget {
         ),
         const SizedBox(height: 80),
         ExpansionTile(
-            title: const TextWidget(text: "Покупателям"),
+            title: const HighTextWidget(text: "Покупателям"),
             expandedAlignment: Alignment.center,
             shape: const RoundedRectangleBorder(side: BorderSide.none),
             children: [
@@ -62,7 +63,7 @@ class AboutPage extends StatelessWidget {
           indent: context.width * 0.035,
         ),
         ExpansionTile(
-            title: const TextWidget(text: "Партнёрам"),
+            title: const HighTextWidget(text: "Партнёрам"),
             expandedAlignment: Alignment.center,
             shape: const RoundedRectangleBorder(side: BorderSide.none),
             children: [
@@ -73,7 +74,7 @@ class AboutPage extends StatelessWidget {
           indent: context.width * 0.035,
         ),
         ExpansionTile(
-            title: const TextWidget(text: "Компания"),
+            title: const HighTextWidget(text: "Компания"),
             expandedAlignment: Alignment.center,
             shape: const RoundedRectangleBorder(side: BorderSide.none),
             children: [
@@ -88,9 +89,9 @@ class AboutPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TextWidget(text: "Контакты"),
+              const HighTextWidget(text: "Контакты"),
               SizedBox(height: context.height * 0.02),
-              Text(
+              const Text(
                 "Г. Ташкент, Юнусабадский р. ул.Юнус Раджаби дом а16",
                 style: TextStyle(
                     color: Color(0xFF999999),
@@ -98,7 +99,7 @@ class AboutPage extends StatelessWidget {
                     fontWeight: FontWeight.w400),
               ),
               SizedBox(height: context.height * 0.02),
-              Text(
+              const Text(
                 "+998 99 123 45 67",
                 style: TextStyle(
                     color: Color(0xFF999999),
@@ -106,7 +107,7 @@ class AboutPage extends StatelessWidget {
                     fontWeight: FontWeight.w400),
               ),
               SizedBox(height: context.height * 0.02),
-              Text(
+              const Text(
                 "help@mail.uz",
                 style: TextStyle(
                     color: Color(0xFF999999),
@@ -125,7 +126,7 @@ class AboutPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TextWidget(text: "Социальные сети"),
+              const HighTextWidget(text: "Социальные сети"),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

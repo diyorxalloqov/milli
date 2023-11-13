@@ -14,16 +14,17 @@ class SecondWidget extends StatefulWidget {
 class FirstWidgetState extends State<SecondWidget> {
   late PageController _pageController;
   int _currentPage = 0;
+  late Timer _timer;
 
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
 
-    Timer.periodic(const Duration(seconds: 7), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 7), (timer) {
       // 2 data length this is coming bloc state
       if (_currentPage < 2) {
         _currentPage++;
-      } else if (_currentPage == 2) {
+      } else if (_currentPage == _currentPage - 1) {
         _pageController.jumpToPage(_currentPage);
       } else {
         _currentPage = 0;
@@ -40,6 +41,7 @@ class FirstWidgetState extends State<SecondWidget> {
   @override
   void dispose() {
     _pageController.dispose();
+    _timer.cancel();
     super.dispose();
   }
 
@@ -64,8 +66,9 @@ class FirstWidgetState extends State<SecondWidget> {
                     borderRadius: BorderRadius.circular(2),
                     color: Colors.grey.shade200,
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: Row(
                       children: [
                         Flexible(
@@ -77,12 +80,12 @@ class FirstWidgetState extends State<SecondWidget> {
                                 "Товар дня",
                                 style: TextStyle(
                                   overflow: TextOverflow.clip,
-                                  color: Color(0xFF171515),
+                                  color: blackColor,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              Image(
+                              const Image(
                                 image: AssetImage(PngImages.phone),
                                 width: 75,
                               )
@@ -97,7 +100,7 @@ class FirstWidgetState extends State<SecondWidget> {
                               Text(
                                 "MacBook Pro 13 inch 8/256/A2338",
                                 style: TextStyle(
-                                    color: Color(0xFF171515),
+                                    color: blackColor,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     overflow: TextOverflow.ellipsis),
@@ -107,7 +110,7 @@ class FirstWidgetState extends State<SecondWidget> {
                               Text(
                                 "14 000 000 сум",
                                 style: TextStyle(
-                                    color: Color(0xFF171515),
+                                    color: blackColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                     overflow: TextOverflow.clip),
@@ -135,7 +138,7 @@ class FirstWidgetState extends State<SecondWidget> {
                   decoration: BoxDecoration(
                     color: _currentPage == i
                         ? primaryColor
-                        : const Color(0xFF171515).withOpacity(0.6),
+                        : blackColor.withOpacity(0.6),
                     borderRadius: BorderRadius.circular(100),
                   ),
                   width: _currentPage == i ? 25 : 10,

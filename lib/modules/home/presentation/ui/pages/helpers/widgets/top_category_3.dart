@@ -45,7 +45,7 @@ class _TopCategory2State extends State<TopCategory3> {
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(3),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "-15% скидка",
                           style: TextStyle(
@@ -64,7 +64,7 @@ class _TopCategory2State extends State<TopCategory3> {
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(3),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Супер цена",
                           style: TextStyle(
@@ -82,7 +82,7 @@ class _TopCategory2State extends State<TopCategory3> {
                   child: Text(
                     "Macbook Air 13 M1 8gb RAM / 256gb SSD storage",
                     style: TextStyle(
-                      color: Color(0xFF171515),
+                      color: blackColor,
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
                       overflow: TextOverflow.ellipsis,
@@ -90,7 +90,7 @@ class _TopCategory2State extends State<TopCategory3> {
                     maxLines: 2,
                   ),
                 ),
-                Text(
+                const Text(
                   "3 370 927 сум",
                   style: TextStyle(
                     decoration: TextDecoration.lineThrough,
@@ -128,7 +128,7 @@ class _TopCategory2State extends State<TopCategory3> {
                               color: Colors.white,
                               width: 17,
                             ),
-                            Text(
+                            const Text(
                               "В корзину",
                               style: TextStyle(
                                 color: Color(0xFFF9F9F9),

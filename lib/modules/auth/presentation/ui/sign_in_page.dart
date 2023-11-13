@@ -102,10 +102,10 @@ class _SignUpPageState extends State<SignInPage> {
                         checkColor: Colors.white,
                         activeColor: primaryColor,
                       ),
-                      const Text(
+                      Text(
                         "Запомнить меня",
                         style: TextStyle(
-                          color: Color(0xFF171515),
+                          color: blackColor,
                           fontSize: 15,
                           fontWeight: FontWeight.w400,
                         ),

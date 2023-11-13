@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/svg_images.dart';
-import 'package:milli/modules/catalog/presentation/ui/widgets/product_item.dart';
+import 'package:milli/modules/catalog/presentation/ui/widgets/catalog_item.dart';
 import 'package:milli/modules/global/widgets/menu_widget.dart';
 import 'package:milli/modules/global/widgets/search_textformfield_widget.dart';
 
@@ -31,6 +31,10 @@ class _CatalogPageState extends State<CatalogPage> {
     "Asus",
     "HP",
     "Apple",
+    "Dell",
+    "Acer",
+    "Asus",
+    "Acer",
     "Dell",
     "Acer",
     "Asus",
@@ -77,18 +81,17 @@ class _CatalogPageState extends State<CatalogPage> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const Text(
+                 Text(
                   "Ноутбуки",
                   style: TextStyle(
-                    color: Color(0xFF171515),
+                    color: blackColor,
                     fontSize: 24,
-                    fontFamily: 'Raleway',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                const Text(
-                  "159 товаров",
-                  style: TextStyle(
+                Text(
+                  "${chipTitle.length} товаров",
+                  style: const TextStyle(
                     color: Color(0xFF999999),
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
@@ -129,7 +132,9 @@ class _CatalogPageState extends State<CatalogPage> {
                                 showMore = !showMore;
                               });
                             },
-                            child: Text(showMore ? "меньше" : "Ещё 11 "),
+                            child: Text(showMore
+                                ? "меньше"
+                                : "Ещё ${chipTitle.length - limit} "),
                           )
                         : const SizedBox()),
                 )

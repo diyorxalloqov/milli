@@ -5,14 +5,14 @@ import 'package:milli/assets/constants/png_images.dart';
 import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 
-class TopCategory2 extends StatefulWidget {
-  const TopCategory2({super.key});
+class TopCategoryShopping extends StatefulWidget {
+  const TopCategoryShopping({super.key});
 
   @override
-  State<TopCategory2> createState() => _TopCategory2State();
+  State<TopCategoryShopping> createState() => _TopCategory2State();
 }
 
-class _TopCategory2State extends State<TopCategory2> {
+class _TopCategory2State extends State<TopCategoryShopping> {
   bool _isLiked = false;
   @override
   Widget build(BuildContext context) {

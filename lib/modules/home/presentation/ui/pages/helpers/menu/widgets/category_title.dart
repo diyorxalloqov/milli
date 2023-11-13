@@ -23,7 +23,7 @@ class CategoryTitle extends StatelessWidget {
           children: [
             Text(
               text,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFFF9F9F9),
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
