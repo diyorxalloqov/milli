@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ExpansionTileTitleWidget extends StatelessWidget {
+class ExpansionTileItemWidget extends StatelessWidget {
   final VoidCallback onTap;
   final String text;
-  const ExpansionTileTitleWidget(
+  const ExpansionTileItemWidget(
       {super.key, required this.onTap, required this.text});
 
   @override

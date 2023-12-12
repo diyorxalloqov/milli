@@ -6,6 +6,7 @@ import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 import 'package:milli/modules/global/widgets/high_text_widget.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/expansionTile_item_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -40,23 +41,23 @@ class AboutPage extends StatelessWidget {
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                 ),
-              )
+              ),
+              ElevatedButton(onPressed: () {}, child: Text('salom'))
             ],
           ),
         ),
         const SizedBox(height: 80),
         ExpansionTile(
             title: const HighTextWidget(text: "Покупателям"),
-            expandedAlignment: Alignment.center,
             shape: const RoundedRectangleBorder(side: BorderSide.none),
             children: [
-              ExpansionTileTitleWidget(onTap: () {}, text: "Как сделать заказ"),
-              ExpansionTileTitleWidget(onTap: () {}, text: "Способы оплаты"),
-              ExpansionTileTitleWidget(onTap: () {}, text: "Доставка"),
-              ExpansionTileTitleWidget(onTap: () {}, text: "Возврат товара"),
-              ExpansionTileTitleWidget(
+              ExpansionTileItemWidget(onTap: () {}, text: "Как сделать заказ"),
+              ExpansionTileItemWidget(onTap: () {}, text: "Способы оплаты"),
+              ExpansionTileItemWidget(onTap: () {}, text: "Доставка"),
+              ExpansionTileItemWidget(onTap: () {}, text: "Возврат товара"),
+              ExpansionTileItemWidget(
                   onTap: () {}, text: "Возврат денежных средств"),
-              ExpansionTileTitleWidget(onTap: () {}, text: "Вопросы и ответы"),
+              ExpansionTileItemWidget(onTap: () {}, text: "Вопросы и ответы"),
             ]),
         Divider(
           endIndent: context.width * 0.035,
@@ -64,10 +65,9 @@ class AboutPage extends StatelessWidget {
         ),
         ExpansionTile(
             title: const HighTextWidget(text: "Партнёрам"),
-            expandedAlignment: Alignment.center,
             shape: const RoundedRectangleBorder(side: BorderSide.none),
             children: [
-              ExpansionTileTitleWidget(onTap: () {}, text: "Как сделать заказ"),
+              ExpansionTileItemWidget(onTap: () {}, text: "Как сделать заказ"),
             ]),
         Divider(
           endIndent: context.width * 0.035,
@@ -75,10 +75,9 @@ class AboutPage extends StatelessWidget {
         ),
         ExpansionTile(
             title: const HighTextWidget(text: "Компания"),
-            expandedAlignment: Alignment.center,
             shape: const RoundedRectangleBorder(side: BorderSide.none),
             children: [
-              ExpansionTileTitleWidget(onTap: () {}, text: "Как сделать заказ"),
+              ExpansionTileItemWidget(onTap: () {}, text: "Как сделать заказ"),
             ]),
         Divider(
           endIndent: context.width * 0.035,
@@ -134,7 +133,11 @@ class AboutPage extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: context.width * 0.04, top: context.height * 0.03),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        final Uri url =
+                            Uri.parse("https://t.me/Flutter_dart_developer");
+                        launchUrl(url);
+                      },
                       borderRadius: BorderRadius.circular(30),
                       child: CircleAvatar(
                         radius: 30,
@@ -151,7 +154,10 @@ class AboutPage extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: context.width * 0.04, top: context.height * 0.03),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        final Uri url = Uri.parse("https://www.instagram.com");
+                        launchUrl(url);
+                      },
                       borderRadius: BorderRadius.circular(30),
                       child: CircleAvatar(
                         radius: 30,
@@ -167,7 +173,10 @@ class AboutPage extends StatelessWidget {
                     padding: EdgeInsets.only(
                         left: context.width * 0.04, top: context.height * 0.03),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        final Uri url = Uri.parse("https://www.facebook.com");
+                        launchUrl(url);
+                      },
                       borderRadius: BorderRadius.circular(30),
                       child: CircleAvatar(
                         radius: 30,

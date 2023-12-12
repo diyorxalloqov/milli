@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/png_images.dart';
 import 'package:milli/assets/constants/svg_images.dart';
+import 'package:milli/modules/global/presentation/product/helpers/spacer_widget.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 
 class TopCategory2 extends StatefulWidget {
@@ -56,7 +57,7 @@ class _TopCategory2State extends State<TopCategory2> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SpaceWidth(),
                     Container(
                       height: 16,
                       width: 60,

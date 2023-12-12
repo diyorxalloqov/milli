@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/modules/catalog/presentation/ui/widgets/catalog_item.dart';
+import 'package:milli/modules/global/presentation/product/helpers/spacer_widget.dart';
 import 'package:milli/modules/global/widgets/menu_widget.dart';
 import 'package:milli/modules/global/widgets/search_textformfield_widget.dart';
 
@@ -142,7 +143,7 @@ class _CatalogPageState extends State<CatalogPage> {
             ),
           ),
           const Expanded(child: ProductItem()),
-          const SizedBox(height: 10)
+          const SpaceHeight()
         ],
       )),
     );

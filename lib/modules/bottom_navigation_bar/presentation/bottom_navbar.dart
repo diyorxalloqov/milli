@@ -17,21 +17,42 @@ class BottomNavbarScreen extends StatefulWidget {
 }
 
 class _BottomNavbarState extends State<BottomNavbarScreen> {
-  int _currenIndex = 0;
+  int _currentIndex = 0;
   final List<Widget> _screens = const [
-    HomeePage(),
+    HomePage(),
     CatalogPage(),
     ShoppingPage(),
     FavouritePage(),
     AccauntPage()
   ];
 
+  static final List<GlobalKey<NavigatorState>> _navigatorKeys =
+      List.generate(5, (index) => GlobalKey<NavigatorState>());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currenIndex],
+      body: Stack(
+        children: _screens
+            .asMap()
+            .map((index, screen) => MapEntry(
+                  index,
+                  Offstage(
+                    offstage: _currentIndex != index,
+                    child: Navigator(
+                      key: _navigatorKeys[index],
+                      onGenerateRoute: (settings) => fade(
+                        page: screen,
+                        settings: settings,
+                      ),
+                    ),
+                  ),
+                ))
+            .values
+            .toList(),
+      ),
       bottomNavigationBar: SizedBox(
-        height: context.height * 0.1,
+        height: context.height * 0.12,
         width: double.infinity,
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -41,13 +62,13 @@ class _BottomNavbarState extends State<BottomNavbarScreen> {
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(SvgImages.home,
                     width: 30,
-                    color: _currenIndex == 0 ? primaryColor : Colors.black),
+                    color: _currentIndex == 0 ? primaryColor : Colors.black),
                 label: "Главная"),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   SvgImages.menu,
                   width: 30,
-                  color: _currenIndex == 1 ? primaryColor : Colors.black,
+                  color: _currentIndex == 1 ? primaryColor : Colors.black,
                 ),
                 label: "Каталог"),
             BottomNavigationBarItem(
@@ -55,55 +76,73 @@ class _BottomNavbarState extends State<BottomNavbarScreen> {
                   SvgPicture.asset(
                     SvgImages.shopping,
                     width: 30,
-                    color: _currenIndex == 2 ? primaryColor : Colors.black,
+                    color: _currentIndex == 2 ? primaryColor : Colors.black,
                   ),
                   Positioned(
-                      left: 10,
-                      bottom: 13,
-                      child: Container(
-                        width: 18,
-                        height: 16,
-                        decoration: ShapeDecoration(
-                          color: primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                    left: 10,
+                    bottom: 13,
+                    child: Container(
+                      width: 18,
+                      height: 16,
+                      decoration: ShapeDecoration(
+                        color: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          '35',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
                           ),
                         ),
-                        child: const Center(
-                          child: Text(
-                            '35',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
-                            ),
-                          ),
-                        ),
-                      )),
+                      ),
+                    ),
+                  ),
                 ]),
                 label: "Корзина"),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   SvgImages.un_favourite,
                   width: 30,
-                  color: _currenIndex == 3 ? primaryColor : Colors.black,
+                  color: _currentIndex == 3 ? primaryColor : Colors.black,
                 ),
                 label: "Избранные"),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   SvgImages.user,
                   width: 30,
-                  color: _currenIndex == 4 ? primaryColor : Colors.black,
+                  color: _currentIndex == 4 ? primaryColor : Colors.black,
                 ),
                 label: "Войти"),
           ],
-          currentIndex: _currenIndex,
+          currentIndex: _currentIndex,
           onTap: (value) {
-            _currenIndex = value;
-            setState(() {});
+            setState(() {
+              _currentIndex = value;
+            });
           },
         ),
       ),
     );
   }
+
+  PageRouteBuilder fade({required Widget page, RouteSettings? settings}) =>
+      PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 200),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+              FadeTransition(
+                opacity: CurvedAnimation(
+                  curve: const Interval(0, 1, curve: Curves.linear),
+                  parent: animation,
+                ),
+                child: child,
+              ),
+          settings: settings,
+          pageBuilder: (BuildContext context, Animation<double> animation,
+                  Animation<double> secondaryAnimation) =>
+              page);
 }

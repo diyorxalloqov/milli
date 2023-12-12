@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/home/diyor/Fintech/flutter/Fintech_project/milli/linux"
+    "cmake.sourceDirectory": "/home/diyor/Fintech/flutter/Fintech_project/Milli/milli/linux",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

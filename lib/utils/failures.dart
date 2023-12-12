@@ -27,5 +27,3 @@ class LocalDbFailure extends Failure {
     this.message = '',
   }) : super(message: message);
 }
-
-class CacheFailure extends Failure {}

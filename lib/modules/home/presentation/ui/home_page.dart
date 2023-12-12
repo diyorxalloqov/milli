@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/png_images.dart';
 import 'package:milli/assets/constants/svg_images.dart';
+import 'package:milli/modules/global/presentation/product/helpers/spacer_widget.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 import 'package:milli/modules/global/widgets/menu_widget.dart';
 import 'package:milli/modules/global/widgets/search_textformfield_widget.dart';
@@ -14,16 +15,15 @@ import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/home_fi
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/home_second_widget.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_category_1.dart';
 import 'package:milli/modules/home/presentation/ui/pages/helpers/widgets/top_category_2.dart';
-import 'package:milli/modules/home/presentation/ui/pages/helpers/menu/menu_page.dart';
 
-class HomeePage extends StatefulWidget {
-  const HomeePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<HomeePage> createState() => _HomeePageState();
+  State<HomePage> createState() => _HomeePageState();
 }
 
-class _HomeePageState extends State<HomeePage> {
+class _HomeePageState extends State<HomePage> {
   late TextEditingController _searchController;
 
   @override
@@ -40,7 +40,7 @@ class _HomeePageState extends State<HomeePage> {
         actions: [
           IconButton(
               onPressed: () {}, icon: SvgPicture.asset(SvgImages.percent)),
-          const SizedBox(width: 10),
+          const SpaceWidth(),
           IconButton(onPressed: () {}, icon: SvgPicture.asset(SvgImages.call)),
         ],
       ),
@@ -61,15 +61,12 @@ class _HomeePageState extends State<HomeePage> {
                     Row(
                       children: [
                         MenuWidget(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MenuPage()));
-                          },
+                          onTap: () =>
+                              Navigator.of(context, rootNavigator: true)
+                                  .pushNamed('menu_page'),
                           icon: const Icon(Icons.menu),
                         ),
-                        const SizedBox(width: 10),
+                        const SpaceWidth(),
                         Expanded(
                           child: SearchTextFormFieldWidget(
                               text: "Поиск товаров",

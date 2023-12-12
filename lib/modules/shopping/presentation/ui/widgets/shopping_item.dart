@@ -1,29 +1,59 @@
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:milli/assets/constants/app_colors.dart';
+import 'package:milli/modules/global/presentation/product/product_detail_page.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 import 'package:milli/modules/global/widgets/high_text_widget.dart';
 import 'package:milli/modules/global/widgets/small_text_widget.dart';
 import 'package:milli/modules/shopping/presentation/ui/widgets/item_count_button_widget.dart';
 
-class ShoppingItem extends StatelessWidget {
+class ShoppingItem extends StatefulWidget {
   const ShoppingItem({super.key});
 
   @override
+  State<ShoppingItem> createState() => _ShoppingItemState();
+}
+
+class _ShoppingItemState extends State<ShoppingItem> {
+  bool _isCheckIndex = false;
+  @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {
+        Navigator.of(context, rootNavigator: true).push(
+            MaterialPageRoute(builder: (context) => ProductDetailsPage()));
+      },
+      onLongPress: () {
+        _isCheckIndex = !_isCheckIndex;
+        setState(() {});
+      },
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // CachedNetworkImage(
+          //   imageUrl: "http://via.placeholder.com/200x150",
+          //   imageBuilder: (context, imageProvider) => Container(
+          //     decoration: BoxDecoration(
+          //       image: DecorationImage(
+          //           image: imageProvider,
+          //           fit: BoxFit.cover,
+          //           colorFilter:
+          //               ColorFilter.mode(Colors.red, BlendMode.colorBurn)),
+          //     ),
+          //   ),
+          //   placeholder: (context, url) => CircularProgressIndicator(),
+          //   errorWidget: (context, url, error) => Icon(Icons.error),
+          // ),
           Container(
             width: context.width * 0.3,
             height: context.width * 0.3,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(width: 2, color: const Color(0xFFEBEBEB)),
-                image: DecorationImage(
+                image: const DecorationImage(
                   alignment: Alignment.center,
-                  image: NetworkImage(
+                  image: FastCachedImageProvider(
                       "https://cdn.salla.sa/eRgQD/kftjgEUjltRCFyugNAtEX3Gr1BE2qQ2KnPItuHuF.png"),
                   fit: BoxFit.cover,
                 )),
@@ -84,7 +114,12 @@ class ShoppingItem extends StatelessWidget {
               ],
             ),
           ),
-          Checkbox(value: true, onChanged: (v) {})
+          Checkbox(
+              value: _isCheckIndex,
+              onChanged: (v) {
+                _isCheckIndex = v!;
+                setState(() {});
+              })
         ],
       ),
       subtitle: Padding(

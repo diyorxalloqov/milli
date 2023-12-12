@@ -14,12 +14,10 @@ class ShoppingPage extends StatefulWidget {
 }
 
 class _ShoppingPageState extends State<ShoppingPage> {
-  final List ss = [
-    '',
-    '',
-    '',
-    '',
-  ];
+  final List ss = ['1', '2', '3', '4', "5"];
+
+  bool _isCheckAll = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +51,12 @@ class _ShoppingPageState extends State<ShoppingPage> {
                                     children: [
                                       const SmallTextWidget(
                                           text: "Выбрать всё"),
-                                      Checkbox(value: true, onChanged: (v) {})
+                                      Checkbox(
+                                          value: _isCheckAll,
+                                          onChanged: (v) {
+                                            _isCheckAll = v!;
+                                            setState(() {});
+                                          })
                                     ],
                                   ),
                                 ],

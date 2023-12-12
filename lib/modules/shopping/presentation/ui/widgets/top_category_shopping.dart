@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/png_images.dart';
 import 'package:milli/assets/constants/svg_images.dart';
+import 'package:milli/modules/global/presentation/product/helpers/spacer_widget.dart';
 import 'package:milli/modules/global/widgets/extensions/size.dart';
 
 class TopCategoryShopping extends StatefulWidget {
@@ -13,7 +14,8 @@ class TopCategoryShopping extends StatefulWidget {
 }
 
 class _TopCategory2State extends State<TopCategoryShopping> {
-  bool _isLiked = false;
+  final List<bool> _isLiked = List.generate(15, (index) => false);
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -56,7 +58,7 @@ class _TopCategory2State extends State<TopCategoryShopping> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
+                    const SpaceWidth(),
                     Container(
                       height: 16,
                       width: 60,
@@ -142,7 +144,7 @@ class _TopCategory2State extends State<TopCategoryShopping> {
                     ),
                     InkWell(
                       onTap: () {
-                        _isLiked = !_isLiked;
+                        _isLiked[index] = !_isLiked[index];
                         setState(() {});
                       },
                       child: Container(
@@ -153,7 +155,7 @@ class _TopCategory2State extends State<TopCategoryShopping> {
                             borderRadius: BorderRadius.circular(3)),
                         child: Center(
                           child: SvgPicture.asset(
-                            _isLiked
+                            _isLiked[index]
                                 ? SvgImages.favourite
                                 : SvgImages.un_favourite,
                             width: 25,

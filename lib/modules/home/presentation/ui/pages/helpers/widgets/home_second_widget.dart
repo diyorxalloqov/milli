@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/png_images.dart';
+import 'package:milli/modules/global/presentation/product/helpers/spacer_widget.dart';
 
 class SecondWidget extends StatefulWidget {
   const SecondWidget({super.key});
@@ -127,7 +128,7 @@ class FirstWidgetState extends State<SecondWidget> {
               itemCount: 3,
             ),
           ),
-          const SizedBox(height: 10),
+          const SpaceHeight(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

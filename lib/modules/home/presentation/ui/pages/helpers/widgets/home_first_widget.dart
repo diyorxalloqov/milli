@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:milli/assets/constants/app_colors.dart';
 import 'package:milli/assets/constants/png_images.dart';
+import 'package:milli/modules/global/presentation/product/helpers/spacer_widget.dart';
 
 class FirstWidget extends StatefulWidget {
   const FirstWidget({super.key});
@@ -65,6 +66,10 @@ class FirstWidgetState extends State<FirstWidget> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(2),
                     color: Colors.grey.shade200,
+                    image: const DecorationImage(
+                      image: AssetImage(PngImages.ellipse),
+                      alignment: Alignment.centerRight
+                    ),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -115,7 +120,7 @@ class FirstWidgetState extends State<FirstWidget> {
               itemCount: 3,
             ),
           ),
-          const SizedBox(height: 10),
+          const SpaceHeight(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
