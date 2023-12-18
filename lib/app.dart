@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:milli/assets/constants/png_images.dart';
+import 'package:milli/assets/constants/svg_images.dart';
 import 'package:milli/core/db/shared/shared_preferences.dart';
 import 'package:milli/core/router/app_routes.dart';
 
@@ -41,10 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        // child: Image.asset(PngImages.applogo),
-        child: Text("Splash Screen"),
+        child: Image.asset(PngImages.applogo2,fit: BoxFit.cover,width: 150,),
       ),
     );
   }

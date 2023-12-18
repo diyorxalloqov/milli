@@ -12,6 +12,8 @@ class PngImages {
   static const String tree = 'assets/images/tree.png';
   static const String humo = 'assets/images/Humo.png';
   static const String uzCard = 'assets/images/uzCard.png';
+  static const String applogo2 = 'assets/images/logo2.jpg';
+
 
 
 
